@@ -31,16 +31,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-
-// create or delete  elements 
-// console.log(document.documentElement);
-
-// const all =  document.querySelectorAll('.nav__link');
-// console.log(all);
-
-// const newall =  document.getElementsByClassName('nav__link');
-// console.log(newall);
-
 const header = document.querySelector('header');
 
 
@@ -57,12 +47,6 @@ document.querySelector('.cokkie-btn').addEventListener('click', () => {
 });
 
 
-// get styles 
-
-// console.log(message.style.transition);
-
-// console.log(getComputedStyle(message).color);
-
 // smoth scrolling 
 
 const btn__scrool = document.querySelector('.btn--scroll-to');
@@ -77,34 +61,6 @@ btn__scrool.addEventListener('click', function (e) {
   // section1.scrollIntoView();
 
 });
-
-// Event handler's
-
-const section__header = document.querySelector('.section__header');
-
-section__header.addEventListener('mouseenter', () => {
-  console.log('ok');
-})
-
-
-// randint 
-
-const randInt = (min, max) => {
-  Math.floor(Math.random(max - min + 1));
-}
-
-// console.log(randInt(0, 255));
-
-
-
-// random functions
-
-const myrandfunc = () => {
-  console.log('int');
-  let next = 3251;
-  next = ((next * next) / 100) % 10000;
-  return next;
-}
 
 
 const allLinks = document.querySelectorAll('.nav__link');
@@ -153,83 +109,39 @@ data_tabs.forEach(tabs => {
 
 });
 
+// lazy load
 
-// sticky navbar
+const lazyImg = document.querySelectorAll('.lazy-img');
+const allsection = document.querySelectorAll('.section');
 
-// get initialcord
-
-const getInitial = document.querySelector('header nav').getBoundingClientRect();
-// console.log(getInitial);
-document.addEventListener('scroll', () => {
-  if (window.scrollY > getInitial.top) {
-    document.querySelector('header nav').classList.add('stcky')
-  } else {
-    document.querySelector('header nav').classList.remove('stcky')
-  }
-});
-
-
-// make a slider 
-
-const slider = document.querySelector('.slider'),
-  slide = document.querySelectorAll('.slider .slide'),
-  sliderLeft = document.querySelector('.slider__btn--left'),
-  sliderRight = document.querySelector('.slider__btn--right');
-
-let i = 0;
-
-const nextslide = (slid) => {
-  // console.log(slid);
+const option = {
+  threshold : 0.2,
 }
 
-slide.forEach(slid => {
-  // console.log(`translateX(${i}00%)`);
-  // console.log(slid);
-  slid.style.transform = `translateX(${i}00%)`;
-  i++;
+const callback = function(entries , observer){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){      
+      if(entry.target.classList.contains('lazy-img')){
+        entry.target.classList.remove('lazy-img');
+      }
+      entry.target.classList.add('showsection');
+    }else{
+      if(entry.target.classList.contains('lazy-img')){
+        entry.target.classList.add('lazy-img');
+      }
+      entry.target.classList.remove('showsection');
+    }
+  });
+} 
 
-  sliderRight.addEventListener('click', nextslide(slid));
+const observer = new IntersectionObserver(callback , option);
+
+
+allsection.forEach(section => {
+  observer.observe(section);
 });
 
 
-
-// intersection onserver
-
-// const observer = new IntersectionObserver(entries => {
-//   entries.forEach(entry => {
-//     console.log(entry);
-//     entry.target.classList.toggle('show' , !entry.isIntersecting );
-//     if (entry.isIntersecting) observer.unobserve(entry.target);
-//   })
-// },{
-//   threshold: 0.2,
-// });
-
-// const sections = document.querySelectorAll('.section');
-
-// sections.forEach(section => {
-//   observer.observe(section);
-//   // console.log(section);
-// });
-
-
-
-// advanced dom
-// createelement
-const newEle = document.createElement('div');
-
-newEle.innerHTML = 'lorem heading <button>Button</button>';
-
-header.append(newEle);
-
-// setattribute 
-
-newEle.setAttribute('data-new' , '2');
-
-
-console.log(newEle.dataset);
-
-// textContent
-console.log(newEle.innerText);
-console.log(newEle.innerHTML);
-console.log(newEle.textContent);
+lazyImg.forEach(img =>{
+  observer.observe(img)
+});
