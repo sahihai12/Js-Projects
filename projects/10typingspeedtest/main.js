@@ -108,4 +108,7 @@ tryagain.addEventListener('click' , ()=>{
     random_para();
     wpm.innerHTML = 0;
     mistake.innerHTML = 0;
+    input.removeAttribute('disabled' , '');
+    input.value = "";
+    input.focus()
 });
