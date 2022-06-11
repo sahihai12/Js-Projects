@@ -47,14 +47,7 @@ submitBtn.addEventListener("click", () => {
             let value = document.querySelector('.parameterValue').value;
             console.log(`${key} : ${value} `);
         }
-        // paramsection.forEach(section => {
-        //     console.log(section);
-            // let key = document.querySelector('.parameterKey').value;
-            // let value = document.querySelector('.parameterValue').value;
-            // console.log(`${key} : ${value} `);
-        //     // data[key] = value;
-
-        // });
+        
     } else {
         console.log(contentType);
         let textarea = document.querySelector('.jsonforpost').value;
