@@ -1,11 +1,12 @@
 "use strict";
 
 const submitBtn = document.querySelector("button"),
-    jsonData = document.querySelector(".jsonData input"),
-    customParameter = document.querySelector(".customParameter input"),
-    paramsection = document.querySelector(".paramsection"),
     json = document.querySelector(".json"),
     addparam = document.querySelector(".add");
+
+let jsonData = document.querySelector(".jsonData input"),
+customParameter = document.querySelector(".customParameter input"),
+paramsection = document.querySelector(".paramsection");
 
 jsonData.addEventListener("click", () => {
     paramsection.style.display = "none";
@@ -18,7 +19,6 @@ customParameter.addEventListener("click", () => {
 });
 
 addparam.addEventListener("click", () => {
-    console.log("ok");
     let data = `<div class="parameters">
     <input type="text" class="parameterKey" placeholder="Key">
     <input type="text" class="parameterValue" placeholder="Value">
@@ -38,13 +38,27 @@ submitBtn.addEventListener("click", () => {
     let url = document.querySelector('.url');
     let request = document.querySelector('input[name="request"]:checked').value;
     let contentType = document.querySelector('input[name="content"]:checked').value;
-    // let data = {};
+    let data = {};
 
-    if (contentType == 'custom') {
-        console.log(paramsection)
-        // const paramsections = document.querySelectorAll('.paramsection .parameters');
+    if (contentType == 'customtype') {
+        paramsection = document.querySelectorAll('.paramsection .parameters');
+        for (const key of paramsection) {
+            let key = document.querySelector('.parameterKey').value;
+            let value = document.querySelector('.parameterValue').value;
+            console.log(`${key} : ${value} `);
+        }
+        // paramsection.forEach(section => {
+        //     console.log(section);
+            // let key = document.querySelector('.parameterKey').value;
+            // let value = document.querySelector('.parameterValue').value;
+            // console.log(`${key} : ${value} `);
+        //     // data[key] = value;
+
+        // });
     } else {
-        console.log(contentType)
+        console.log(contentType);
+        let textarea = document.querySelector('.jsonforpost').value;
+        data = textarea;
     }
 
     
