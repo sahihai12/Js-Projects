@@ -15,26 +15,26 @@
 
     <div class="wrapper">
         <h2>PostMan Clone</h2>
-        <input type="text" placeholder="Enter url">
+        <input type="text" placeholder="Enter url" class="url">
         <div class="radio">
             <div class="contType">
-                <p class="heading">
-                     <input type="radio" name="request" class="getType" value='get' checked><span>Get</span>
+                <p class="heading getType">
+                     <input type="radio" name="request"  value='get' checked><span>Get</span>
                 </p>
-                <p class="heading">
-                    <input type="radio" name="request" class="postType" value='post'><span>Post</span>
+                <p class="heading postType">
+                    <input type="radio" name="request" value='post'><span>Post</span>
 
                 </p>
-                <p class="heading">
-                     <input type="radio" name="content" class="jsonData" value='json' checked><span>JSON</span>
+                <p class="heading jsonData">
+                     <input type="radio" name="content" value='jsontype' checked><span>JSON</span>
                 </p>
-                <p class="heading">
-                    <input type="radio" name="content" class="customParameter" value='post'><span>Custom Parameter </span>
+                <p class="heading customParameter">
+                    <input type="radio" name="content" value='customtype'><span>Custom Parameter </span>
                 </p>
             </div>
         </div>
         <div class="json">
-            <textarea clas="jsondata" id="" rows="2" placeholder="Json data "></textarea>
+            <textarea clas="jsonforpost" id="" rows="5" placeholder="Json data "></textarea>
         </div>
         <div class="paramsection">
             <div class="parameters">

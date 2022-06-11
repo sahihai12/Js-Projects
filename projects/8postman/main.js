@@ -1,32 +1,75 @@
-'use strict';
+"use strict";
 
-const submitBtn = document.querySelector('button'),
-output = document.querySelector('.output'),
-json = document.querySelector('.json'),
-paramsection = document.querySelector('.paramsection'),
-parameters = document.querySelector('.parameters'),
-jsonData = document.querySelector('.jsonData'),
-customParameter = document.querySelector('.customParameter'),
-contentType = document.getElementsByName('content'),
-postType = document.querySelector('.postType'),
-getType = document.querySelector('.getType'),
-radioContentType = document.querySelector('input[name="content"]:checked').value;
-;
+const submitBtn = document.querySelector("button"),
+    jsonData = document.querySelector(".jsonData input"),
+    customParameter = document.querySelector(".customParameter input"),
+    paramsection = document.querySelector(".paramsection"),
+    json = document.querySelector(".json"),
+    addparam = document.querySelector(".add");
 
-
-console.log(radioContentType);
-console.log();
-
-if (radioContentType.checked) {
+jsonData.addEventListener("click", () => {
+    paramsection.style.display = "none";
     json.style.display = "block";
-}
+});
 
-if(radioContentType.checked){
+customParameter.addEventListener("click", () => {
     paramsection.style.display = "block";
-    console.log('check');
-}
+    json.style.display = "none";
+});
+
+addparam.addEventListener("click", () => {
+    console.log("ok");
+    let data = `<div class="parameters">
+    <input type="text" class="parameterKey" placeholder="Key">
+    <input type="text" class="parameterValue" placeholder="Value">
+    <div class="close"><i class="fas fa-minus"></i></div>
+</div>`;
+    paramsection.insertAdjacentHTML("beforeend", data);
+
+    let close = document.querySelectorAll('.close');
+    close.forEach(cl => {
+        cl.addEventListener('click', () => {
+            console.log(cl.parentElement.remove());
+        })
+    });
+});
+
+submitBtn.addEventListener("click", () => {
+    let url = document.querySelector('.url');
+    let request = document.querySelector('input[name="request"]:checked').value;
+    let contentType = document.querySelector('input[name="content"]:checked').value;
+    // let data = {};
+
+    if (contentType == 'custom') {
+        // console.log(paramsection)
+        // const paramsections = document.querySelectorAll('.paramsection .parameters');
+    } else {
+        console.log(contentType)
+    }
+
+    
 
 
-submitBtn.addEventListener('click' , () => {
-    output.style.display = 'block';
+
+    // if (url.value) {
+    //     if (request == 'get') {
+    //         fetch(url).then((respone) => response.json()).then(jsons => outputdisplay(jsons))
+    //     } else {
+    //         fetch(url, {
+    //                 method: request,
+    //                 body: JSON.stringify({
+    //                     title: 'foo',
+    //                     body: 'bar',
+    //                     userId: 1907097009,
+    //                 }),
+    //                 headers: {
+    //                     'Content-type': 'application/json; charset=UTF-8',
+    //                 },
+    //             })
+    //             .then((response) => response.json())
+    //             .then((jsons) => outputdisplay(jsons));
+    //     }
+    // } else {
+    //     throw new Error('url must be valid')
+    // }
 });

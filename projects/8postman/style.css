@@ -71,6 +71,7 @@ input[type='radio']:focus{
 .paramsection .parameters{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 .paramsection .parameters > *{
     margin-right: 20px;
