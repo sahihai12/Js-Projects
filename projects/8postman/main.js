@@ -41,7 +41,7 @@ submitBtn.addEventListener("click", () => {
     // let data = {};
 
     if (contentType == 'custom') {
-        // console.log(paramsection)
+        console.log(paramsection)
         // const paramsections = document.querySelectorAll('.paramsection .parameters');
     } else {
         console.log(contentType)
