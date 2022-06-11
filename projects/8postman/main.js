@@ -42,12 +42,13 @@ submitBtn.addEventListener("click", () => {
 
     if (contentType == 'customtype') {
         paramsection = document.querySelectorAll('.paramsection .parameters');
-        for (const key of paramsection) {
+        paramsection.forEach((section , index) => {
             let key = document.querySelector('.parameterKey').value;
             let value = document.querySelector('.parameterValue').value;
             console.log(`${key} : ${value} `);
-        }
-        
+            data[key] = value;
+
+        });
     } else {
         console.log(contentType);
         let textarea = document.querySelector('.jsonforpost').value;
