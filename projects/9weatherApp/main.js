@@ -1,5 +1,34 @@
 'use strict';
 
+const city = document.querySelector('.city'),
+wind = document.querySelector('.wind .value'),
+humidity = document.querySelector('.humidity .value');
+
+document.querySelector('.location').addEventListener('click' , ()=>{
+    const geolocation = navigator.geolocation.getCurrentPosition(showposition);
+});
+
+function showposition(locationdata) {
+    console.log(locationdata);
+    let latitude = locationdata.coords.latitude;
+    let longitude = locationdata.coords.longitude;
+    console.log(latitude , longitude);
+    
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=de5f3c726f96d8d5af62ae5017f72c99`).then(response =>  response.json()).then(json => showdata(json)).catch(e => console.log(e))
+}
+// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+ 
+
+// showdata in html
+function showdata(data) {
+    console.log(data);
+    city.textContent =  data.name;
+    getday();
+    humidity.textContent = data.main.humidity + '%';
+    wind.textContent = data.wind.speed + 'km/h';
+
+}
+ 
 
 const getday = () =>  {
     const weekday = [
@@ -13,6 +42,5 @@ const getday = () =>  {
     ];
     const d = new Date();
     let day = weekday[d.getDay()];
-    console.log(day);
+    document.querySelector('.day').textContent = day;
 }
-getday();
