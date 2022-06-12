@@ -2,7 +2,8 @@
 
 const submitBtn = document.querySelector("button"),
     json = document.querySelector(".json"),
-    addparam = document.querySelector(".add");
+    addparam = document.querySelector(".add"),
+    output = document.querySelector('.output');
 
 let jsonData = document.querySelector(".jsonData input"),
 customParameter = document.querySelector(".customParameter input"),
@@ -17,11 +18,12 @@ customParameter.addEventListener("click", () => {
     paramsection.style.display = "block";
     json.style.display = "none";
 });
-
+let i = 0;
 addparam.addEventListener("click", () => {
+    ++i;
     let data = `<div class="parameters">
-    <input type="text" class="parameterKey" placeholder="Key">
-    <input type="text" class="parameterValue" placeholder="Value">
+    <input type="text" class="parameterKey${i}" placeholder="Key">
+    <input type="text" class="parameterValue${i}" placeholder="Value">
     <div class="close"><i class="fas fa-minus"></i></div>
 </div>`;
     paramsection.insertAdjacentHTML("beforeend", data);
@@ -29,7 +31,7 @@ addparam.addEventListener("click", () => {
     let close = document.querySelectorAll('.close');
     close.forEach(cl => {
         cl.addEventListener('click', () => {
-            console.log(cl.parentElement.remove());
+            cl.parentElement.remove();
         })
     });
 });
@@ -43,11 +45,9 @@ submitBtn.addEventListener("click", () => {
     if (contentType == 'customtype') {
         paramsection = document.querySelectorAll('.paramsection .parameters');
         paramsection.forEach((section , index) => {
-            let key = document.querySelector('.parameterKey').value;
-            let value = document.querySelector('.parameterValue').value;
-            console.log(`${key} : ${value} `);
+            let key = document.querySelector(`.parameterKey${index}`).value;
+            let value = document.querySelector(`.parameterValue${index}`).value;
             data[key] = value;
-
         });
     } else {
         console.log(contentType);
@@ -55,29 +55,33 @@ submitBtn.addEventListener("click", () => {
         data = textarea;
     }
 
-    
-
-
-
-    // if (url.value) {
-    //     if (request == 'get') {
-    //         fetch(url).then((respone) => response.json()).then(jsons => outputdisplay(jsons))
-    //     } else {
-    //         fetch(url, {
-    //                 method: request,
-    //                 body: JSON.stringify({
-    //                     title: 'foo',
-    //                     body: 'bar',
-    //                     userId: 1907097009,
-    //                 }),
-    //                 headers: {
-    //                     'Content-type': 'application/json; charset=UTF-8',
-    //                 },
-    //             })
-    //             .then((response) => response.json())
-    //             .then((jsons) => outputdisplay(jsons));
-    //     }
-    // } else {
-    //     throw new Error('url must be valid')
-    // }
+    if (url.value) {
+        if (request == 'get') {
+            fetch(url.value).then((response) => response.json()).then(jsons => outputdisplay(jsons));
+        } else {
+            console.log(JSON.stringify(data));
+            fetch(url.value, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                .then((response) => response.json())
+                .then((jsons) => outputdisplay(jsons));
+        }
+    } else {
+        throw new Error('url must be valid')
+    }
 });
+
+function outputdisplay(datafromrequest) {
+    console.log(datafromrequest);
+    console.log('from output display');
+    output.style.display = 'block';  
+    const outputValue = document.querySelector('.output p');
+    outputValue.innerHTML = JSON.stringify(datafromrequest) ;
+    console.log('output value');
+}
+
+
