@@ -1,6 +1,5 @@
 'use strict';
 
-
 console.log('asynchronus js');
 // callbacks 
 // promises

@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 const submitBtn = document.querySelector("button"),
     json = document.querySelector(".json"),
@@ -50,7 +50,7 @@ submitBtn.addEventListener("click", () => {
             data[key] = value;
         });
     } else {
-        console.log(contentType);
+        // console.log(contentType);
         let textarea = document.querySelector('.jsonforpost').value;
         data = textarea;
     }
@@ -68,7 +68,7 @@ submitBtn.addEventListener("click", () => {
                     },
                 })
                 .then((response) => response.json())
-                .then((jsons) => outputdisplay(jsons));
+                .then((jsons) => outputdisplay(jsons)).catch(err => console.log(err));
         }
     } else {
         throw new Error('url must be valid')

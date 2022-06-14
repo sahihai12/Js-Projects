@@ -6,6 +6,7 @@
     transition: background .5s;
 }
 
+
 body {
     display: flex;
     align-items: center;
@@ -71,7 +72,7 @@ h2 i{
 .upper{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .left , .icon {
     flex: 1 1 49%;
@@ -80,12 +81,14 @@ h2 i{
     font-size: 100px;
     text-align: center;
     color: #d131ee;
+    margin-bottom: 15px;
 }
 .meta , .temperature{
     display: flex;
     margin-bottom: 5px;
 }
 .meta p{
+    font-size: 14px;
     color: #6a6767;
 } 
 .meta .date{
@@ -106,14 +109,16 @@ h2 i{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 40px;
+    flex-wrap: wrap;
+    margin-top: 0px;
 }
 
 .lower p{
-    flex: 1 1 50%;
+    flex: 1 1 40%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 10px;
 }
 .lower span{
     font-size: 20px;
@@ -131,9 +136,29 @@ h2 i{
 .location{
     cursor: pointer;
 }
+.upper  .left{
+    flex : 1 1 100%;
+}
+.upper  .cloudsper{
+    flex : 1 1 100%;
+}
+.cloudsper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image {
+    display: flex;
+    align-items: center;
+}
+.meta{
+    margin-top: 4px;
+}
 
-
-
-
-
+.weathermain{
+    margin-left: 10px;
+}
 /* fetch("https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=de5f3c726f96d8d5af62ae5017f72c99"); */
+/* // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=28.6542&lon=77.2373&appid=de5f3c726f96d8d5af62ae5017f72c99`).then(response =>  response.json()).then(json => console.log(json)).catch(e => console.log(e))
+// http://openweathermap.org/img/w/50n.png
+// fetch('https://api.openweathermap.org/data/2.5/weather?q=Darya Ganj&appid=de5f3c726f96d8d5af62ae5017f72c99').then(respo => respo.json()).then(data => console.log(data , 'zipdata')).catch(e => console.log(e)) */
