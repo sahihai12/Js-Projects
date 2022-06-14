@@ -13,7 +13,7 @@
             padding: 20px;
             border: 1px solid #000;
             text-align: center;
-            opacity: 0;
+            /* opacity: 0; */
         }
 
         .show {
@@ -91,8 +91,8 @@
         <h1>22 div</h1>
     </div>
 
-    <script type="text/javascript">
-        console.log('learn insection observer Api');
+    <!-- <script type="text/javascript">
+        // console.log('learn insection observer Api');
 
         const divs = document.querySelectorAll('div');
         const options = {
@@ -104,13 +104,10 @@
             entries.forEach(entry => {
                 console.log(entry);
                 if (entry.isIntersecting == true) {
-                    // console.log(entry);
                     entry.target.classList.add('show');
-                    console.log(entry.target);
                 } else {
                     entry.target.classList.remove('show');
                 }
-                console.log(entry);
             });
         }
 
@@ -119,7 +116,9 @@
         divs.forEach(div => {
             observer.observe(div);
         });
-    </script>
+    </script> -->
+
+    <script src="./main.js"></script>
 </body>
 
 </html>
