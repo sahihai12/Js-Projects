@@ -30,4 +30,3 @@ if (i < lengthslide) {
 }else{
     console.log('no more slides');
 }
-
