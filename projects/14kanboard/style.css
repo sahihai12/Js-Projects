@@ -81,3 +81,44 @@ body {
     border: none;
     font-size: 16px;
 }
+
+/* addCardDiv */
+.addCardDiv {
+    background: #d7d7d7;
+    padding: 10px 10px 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.addCardDiv form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.addCardDiv form>* {
+    margin-bottom: 10px;
+}
+
+.addCardDiv form input {
+    width: 100%;
+    padding: 6px;
+    border: none;
+}
+
+.addCardDiv form .submitdata {
+    width: fit-content;
+    border: none;
+    background: transparent;
+}
+
+.addCardDiv form .submitdata i {
+    background-color: #5096ff;
+    color: #fff;
+    border-radius: 100px;
+    font-size: 30px;
+}
+
+input:focus {
+    outline: none;
+}
