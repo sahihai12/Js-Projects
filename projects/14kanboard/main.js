@@ -1,11 +1,6 @@
 'use strict';
 
-import {
-    dataBase
-} from "./mvc/data.js";
-import {
-    create
-} from "./mvc/createShow.js";
+
 
 const addcardbutton = document.querySelectorAll('.mainlist .addCard');
 
@@ -39,4 +34,5 @@ function submit() {
 }
 
 
+const data = fetch('./mvc/data.json').then(response => response.json()).then(da => console.log(da)).catch(e => console.log(e)); 
 // console.log(dataBase.Todo);

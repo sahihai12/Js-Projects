@@ -1,4 +1,4 @@
-import {dataBase} from './data.js';
+import {dataBase} from './data.json';
 
 let id = 1; 
 export function create(tit , desc) {
